@@ -1,0 +1,284 @@
+/* =============================================
+   ESTILOS NETFLIX - SELETOR DE PERFIS
+   ============================================= */
+
+/* Reset e estilos globais */
+* {
+    margin: 0; /* Remove margem externa de todos os elementos */
+    padding: 0; /* Remove preenchimento interno de todos os elementos */
+    box-sizing: border-box; /* Inclui padding e border na largura/altura total */
+}
+
+html, body {
+    height: 100%; /* Faz html e body ocuparem 100% da altura da viewport */
+}
+
+body {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #141414 100%); /* Fundo gradiente diagonal */
+    color: #ffffff; /* Cor do texto: branco */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif; /* Fontes do sistema */
+    font-size: 16px; /* Tamanho base da fonte */
+    line-height: 1.6; /* Altura da linha para melhor legibilidade */
+    overflow-x: hidden; /* Esconde barra de rolagem horizontal */
+    background-attachment: fixed; /* Fundo fixo durante rolagem */
+}
+
+/* Container Principal */
+main {
+    display: flex; /* Usa flexbox para layout */
+    flex-direction: column; /* Organiza filhos em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Altura mínima 100% da viewport */
+    padding: 40px 20px; /* Preenchimento: 40px cima/baixo, 20px lados */
+
+}
+
+/* Header/Cabeçalho */
+header {
+    text-align: center; /* Centraliza texto */
+    margin-bottom: 80px; /* Margem inferior */
+    animation: fadeInHeader 1s ease-out; /* Animação de entrada */
+}
+
+h1 {
+    font-size: 56px; /* Tamanho da fonte do título */
+    font-weight: 700; /* Peso da fonte: negrito extra */
+    color: inherit; /* Cor: branco */
+    text-transform: uppercase; /* Texto em maiúsculo */
+    letter-spacing: 3px; /* Espaçamento entre letras */
+    margin-bottom: 10px; /* Margem inferior */
+}
+
+h1::after {
+    content: ''; /* Conteúdo vazio para elemento decorativo */
+    display: block; /* Exibe como bloco */
+    width: 300px; /* Largura da linha decorativa */
+    height: 4px; /* Altura da linha */
+    background: #e50914; /* Fundo vermelho Netflix */
+    margin: 20px auto 0; /* Margem: centraliza horizontalmente */
+    border-radius: 2px; /* Bordas arredondadas */
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.6); /* Sombra com brilho vermelho */
+}
+
+/* Seção de Perfis - Grid Layout */
+.profiles {
+    display: grid; /* Usa CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Colunas responsivas */
+    gap: 50px; /* Espaçamento entre itens */
+    max-width: 900px; /* Largura máxima */
+    width: 100%; /* Largura total do container */
+    perspective: 1000px; /* Cria perspectiva 3D */
+    border: 2px solid rgba(0, 0, 0, 0.145);
+    box-shadow: 0px 5px 5px rgb(0, 0, 0, 0.5);
+    
+}
+
+/* Figura/Card do Perfil */
+
+figure {
+    padding: 30px;
+}
+figure.profile {
+    cursor: pointer; /* Cursor muda para mão */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transição suave personalizada */
+    text-align: center; /* Centraliza texto */
+    animation: slideUpProfile 0.8s ease-out; /* Animação de entrada */
+    position: relative; /* Posicionamento relativo */
+}
+
+figure.profile:nth-child(1) {
+    animation-delay: 0.1s; /* Atraso na animação do primeiro perfil */
+}
+
+figure.profile:nth-child(2) {
+    animation-delay: 0.2s; /* Atraso na animação do segundo perfil */
+}
+
+figure.profile:nth-child(3) {
+    animation-delay: 0.3s; /* Atraso na animação do terceiro perfil */
+}
+
+figure.profile {
+    transform-style: preserve-3d; /* Preserva transformações 3D */
+}
+
+figure.profile:hover {
+    transform: scale(1.15) translateY(-15px); /* Aumenta e move para cima no hover */
+    z-index: 10; /* Coloca acima dos outros */
+}
+
+/* Imagem do Perfil */
+figure.profile img {
+    width: 100%; /* Largura total do container */
+    height: auto; /* Altura automática */
+    aspect-ratio: 1; /* Proporção 1:1 (quadrado) */
+    border-radius: 110px; /* Bordas muito arredondadas */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8); /* Sombra escura */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transição igual ao container */
+    border: 3px solid transparent; /* Borda transparente */
+    object-fit: cover; /* Corta imagem para caber */
+    display: block; /* Remove espaço extra */
+}
+
+figure.profile:hover img {
+    box-shadow: 0 2px 8px rgba(229, 9, 20, 0.6),0 0 30px rgba(229, 9, 20, 0.4); /* Sombra vermelha com brilho */
+    border-color: #e50914; /* Borda vermelha Netflix */
+}
+
+/* Legenda do Perfil */
+figcaption {
+    margin-top: 20px; /* Margem superior */
+    font-size: 18px; /* Tamanho da fonte */
+    font-weight: 600; /* Peso semi-bold */
+    color: #ffffff; /* Cor cinza */
+    transition: all 0.4s ease; /* Transição suave */
+    text-transform: uppercase; /* Texto maiúsculo */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+    font-size: 14px; /* Tamanho menor (sobrescreve anterior) */
+}
+
+figure.profile:hover figcaption {
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.5); /* Sombra de texto vermelha */
+}
+
+/* Lista de perfis sem marcadores */
+.profile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 50px;
+    width: 100%;
+}
+
+.profile-list li {
+    display: block;
+}
+
+#btnToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 50px;
+    min-width: 100px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    
+}
+
+#btnToggle.dark {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.light  {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #e0e0e0 100%);
+    
+  
+
+} 
+
+body.light h1 {
+    color: #000000;
+   
+}
+
+.light figcaption {
+    color: #000000;
+    
+
+  
+}
+
+.btnManagerPerfil {
+    margin-top: 40px;
+    padding: 10px 20px;
+    background-color: rgb(255, 0, 0);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+
+
+
+
+
+
+
+/* Responsividade para diferentes devices */
+
+@media (max-width: 900px) {
+    h1 {
+        font-size: 40px;
+    }
+    .profiles,
+    .profile-list {
+        gap: 32px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        max-width: 600px;
+    }
+    figure.profile:hover {
+        transform: scale(1.08) translateY(-10px);
+    }
+
+    
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 24px 14px;
+    }
+    h1 {
+        font-size: 32px;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+    }
+    h1::after {
+        width: 220px;
+        margin: 16px auto 0;
+    }
+    .profiles,
+    .profile-list {
+        gap: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        max-width: 100%;
+    }
+    figure.profile {
+        animation-duration: 0.6s;
+    }
+    figure.profile:hover {
+        transform: scale(1.05);
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 26px;
+    }
+    .profiles,
+    .profile-list {
+        gap: 50px;
+        padding: 12px;
+     
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    figure.profile img {
+        border-radius: 90px;
+       
+    }
+    figcaption {
+        font-size: 12px;
+        
+    }
+
+   
+}
